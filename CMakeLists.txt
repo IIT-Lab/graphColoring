@@ -3,5 +3,5 @@ project(graphColoring)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp algorithm.h algorithm.cpp)
 add_executable(graphColoring ${SOURCE_FILES})
