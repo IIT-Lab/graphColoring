@@ -6,6 +6,7 @@
 #define GRAPHCOLORING_ALGORITHM_H
 
 #include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -21,6 +22,8 @@ bool com2(Node node1,Node node2);
 
 void graghColoringByAdjacencyMatrix(vector<vector<int>> map);
 
-//void graghColoringByIncidenceMatrix(vector<vector<int>> map);
+void adjacency2Incidence(vector<vector<int>> _adjacencyMatrix, map<int, map<int, int>> &_incidenceMatrix);
+
+void graghColoringByIncidenceMatrix(map<int, map<int, int>> _incidenceMatrix);
 
 #endif //GRAPHCOLORING_ALGORITHM_H
