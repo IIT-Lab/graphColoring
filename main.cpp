@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "algorithm.h"
+//#include "algorithm.h"
+#include "graphColoring.h"
 
 using namespace std;
 
@@ -43,30 +44,48 @@ vector<vector<int>> hypergraph = { //Incidence Matrix 行号是节点号，列�
 map<int, map<int, int>> hypergraphIncidenceMatrix;
 
 int main() {
+    int colorNum = 3;
+    int nodeNum = (int)incidenceMatrix.size();
+    map<int, node*> mapNodeID2NodePtr;
+
+    for (int i = 0; i < nodeNum; ++i) {
+        node* nodePtr = new node(i);
+        nodePtr->initial(incidenceMatrix);
+//        nodePtr->initial(hypergraph);
+        mapNodeID2NodePtr.insert(pair<int, node*>(i, nodePtr));
+    }
+
+    graghColoring(mapNodeID2NodePtr, colorNum);
+
+    return 0;
+}
+
+//int main() {
 
 //    graghColoringByAdjacencyMatrix(adjacencyMatrix);
 
 //    adjacency2Incidence(adjacencyMatrix, incidenceMatrix);
 
 //    graghColoringByIncidenceMatrix(incidenceMatrix);
-    map<int, int> tempHypergraph;
 
-    for (int i = 0; i < hypergraph.size(); ++i) {
-        tempHypergraph.clear();
-        for (int j = 0; j < hypergraph.at(0).size(); ++j) {
-            tempHypergraph.insert(pair<int, int>(j, hypergraph[i][j]));
-        }
-        hypergraphIncidenceMatrix.insert(pair<int, map<int, int>>(i, tempHypergraph));
-    }
-    cout << "hypergraphIncidenceMatrix:" << endl;
-    for (int m = 0; m < hypergraph.size(); ++m) {
-        for (int i = 0; i < hypergraph.at(0).size(); ++i) {
-            cout << hypergraphIncidenceMatrix[m][i] << ",";
-        }
-        cout << endl;
-    }
-
-    hypergraghColoring(hypergraphIncidenceMatrix);
-
-    return 0;
-}
+//    map<int, int> tempHypergraph;
+//
+//    for (int i = 0; i < hypergraph.size(); ++i) {
+//        tempHypergraph.clear();
+//        for (int j = 0; j < hypergraph.at(0).size(); ++j) {
+//            tempHypergraph.insert(pair<int, int>(j, hypergraph[i][j]));
+//        }
+//        hypergraphIncidenceMatrix.insert(pair<int, map<int, int>>(i, tempHypergraph));
+//    }
+//    cout << "hypergraphIncidenceMatrix:" << endl;
+//    for (int m = 0; m < hypergraph.size(); ++m) {
+//        for (int i = 0; i < hypergraph.at(0).size(); ++i) {
+//            cout << hypergraphIncidenceMatrix[m][i] << ",";
+//        }
+//        cout << endl;
+//    }
+//
+//    hypergraghColoring(hypergraphIncidenceMatrix);
+//
+//    return 0;
+//}

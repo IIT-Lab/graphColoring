@@ -13,7 +13,7 @@ using namespace std;
 struct Node{ //定义节点结构体
     int index; //编号
     int degree; //度
-    int color; //改节点的颜色
+    int color; //节点的颜色
     int order; //着色顺序
 };
 
